@@ -3,6 +3,7 @@ import "./App.scss";
 import Input from "./components/imput/imput";
 import PlayerNba from "./components/main/Main";
 import Main from "./components/main/Main";
+import { ClickImage } from "./components/main/player";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <Main />
+      <ClickImage />
     </div>
   );
 }
