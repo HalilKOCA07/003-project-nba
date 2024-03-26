@@ -10,17 +10,11 @@
     width: 100%;
 }
 
-.input-player{
-    width: 100%;
-}
-
 .imagePlayer img{
     width: 250px;
     height: 300px;
 }
-
 .imagePlayer{
-    margin-top: 1rem;
     width: 250px;
     display: flex;
     flex-direction: column;
@@ -47,23 +41,23 @@
 
 
 //! PLAYER SCORE
-.playerScore{
+.scorePlayers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:start;
+    margin: 0%;
+    width: 220px;
+    height: 300px;
     text-decoration: none;
-    line-height: 1.5rem;
+    line-height: 2rem;
     color: red;
     list-style: none;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 20%;
-    opacity: 0;
+    background-color: white;
+    transform: translateX(100%);
 }
 
-.imgOpacity{
-    opacity: 0;
-}
-
-.playerOpacity{
-    opacity: 1;
+.scorePlayersLink{
+    transform: translateX(0%);
 }
