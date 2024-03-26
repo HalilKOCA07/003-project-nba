@@ -1,54 +1,58 @@
-import  data  from './data'
-import "./main.scss"
+import { useState } from "react";
+import data from "./data";
+import "./main.scss";
 
 const PlayerNba = () => {
-    return(
-       
-         <div className="player-container">  
-        { 
-            data.map((player) => 
-                        <div key={player.name} className="imagePlayer">        
-                            <img src={player.img} alt={player.name} />
-                            <p>{player.name}</p>
-                            <div className="playerScore">
-                                <ul >
-                                    <li>{player.statistics[0]}</li>
-                                    <li>{player.statistics[1]}</li>
-                                    <li>{player.statistics[2]}</li>
-                                    <li>{player.statistics[3]}</li>
-                                </ul>
-                            </div>
-                        </div>  
-            )
-        }
+  return (
+    <div className="player-container">
+      {data.map((player) => (
+        <div key={player.name} className="imagePlayer">
+          <img src={player.img} alt={player.name} />
+          <p>{player.name}</p>
         </div>
-    )
-}
-export default PlayerNba 
+      ))}
+    </div>
+  );
+};
+export default PlayerNba;
 
-export const ClickImage = () => {
-let imagePlayer = document.getElementsByTagName("img")
-let playerInfo = document.querySelector(".playerScore")
-  let playerImage = 1
-  let PlayerScore = 0
-    const handleClick = () => {
-     
-      if(playerImage === 1 && PlayerScore === 0){
-        console.log("image")
+export const PlayerNbaScore = () => {
+  return (
+    <div className="player-container">
+      {data.map((player) => (
+        <div key={player.name} className="playerScore">
+          <p>{player.statistics}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-        playerImage = 0;
-        PlayerScore = 1;
-      }else{
-        console.log("Score")
-        playerImage = 1;
-        PlayerScore = 0;
-      }
-    }
-    return(
-      <div className="imageChange">
-  
-        <button onClick={handleClick}>Click me</button>
-      </div>
-    );
-  }
+export const UseClickImage = () => {
+  const [player, setPlayer] = useState({});
 
+  const [toggle, setToggle] = useState(true);
+
+  const handlePlayer = () => {
+    setPlayer({ ...(player ? <PlayerNba /> : <PlayerNbaScore />) });
+    setToggle(!toggle);
+    console.log(player);
+  };
+
+  // let score = 0
+  //   const handleClick = () => {
+
+  //     if(score === 1){
+  //       console.log("image")
+
+  //     }else{
+  //       console.log("Score")
+
+  //     }
+  //   }
+  return (
+    <div className="imageChange">
+      <button onClick={() => setPlayer(handlePlayer)}>Click me</button>
+    </div>
+  );
+};
