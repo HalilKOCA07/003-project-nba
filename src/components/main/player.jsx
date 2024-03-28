@@ -4,72 +4,27 @@ import "./main.scss";
 import '@fortawesome/fontawesome-free/css/all.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBasketball } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 
-const PlayerNba = () => {
+const PlayerNba = (props) => {
+  const {img, name, statistics} = props.item;
+  const [show, setShow] = useState(true)
+
+
   return (
-    <div className="player-container">
-      {data.map((player) => (
-        <>
-      <div key={player.name} className="imagePlayer">
-          <img src={player.img} alt={player.name} />
-          <p>{player.name}</p>
-        <div className="scorePlayers">
-          <ul>
-            <li><FontAwesomeIcon icon={faBasketball} /> {player.statistics[0]}</li>
-            <li><FontAwesomeIcon icon={faBasketball} /> {player.statistics[1]}</li>
-            <li><FontAwesomeIcon icon={faBasketball} /> {player.statistics[2]}</li>
-            <li><FontAwesomeIcon icon={faBasketball} /> {player.statistics[3]}</li>
-          </ul>
-        </div>
-      </div>
-
-        </>
-      ))}
+    <div onClick={() => setShow(!show)} className="player-container">
+      {show ? <div key={name} className="imagePlayer">
+          <img src={img} alt={name} />
+          
+      </div> : <div className="scorePlayers">
+        <ul>
+          {statistics.map((item, i) => (<li key={i}>{item}</li>))}
+        </ul>
+       
+        </div>}
+        <p>{name}</p>
     </div>
   );
 };
 export default PlayerNba;
-
-
-
-// export const PlayerNbaScore = () => {
-//   return (
-//     <div className="player-container">
-//       {data.map((player) => (
-//         <div key={player.name} className="playerScore">
-//           <p>{player.statistics}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export const UseClickImage = () => {
-//   const [player, setPlayer] = useState({});
-
-//   const [toggle, setToggle] = useState(true);
-
-//   const handlePlayer = () => {
-    
-//     setPlayer({ ...(player ? <PlayerNba /> : <PlayerNbaScore />) });
-//     setToggle(!toggle);
-
-   
-  
-
-//   };
-
-
-//   // let score = 0
-//   //   const handleClick = () => {
-
-//   //     if(score === 1){
-//   //       console.log("image")
-
-//   //     }else{
-//   //       console.log("Score")
-
-//   //     }
-//   //   }
-
